@@ -1,18 +1,26 @@
 package main.solutions.days;
-
-public class Day2 extends Day2022 {
+class Day2 extends Day{
     Day2() {
-        super(false, 2);
+        super(false);
     }
 
-    public void parseInput() {
+    @Override
+    int getDay() {
+        return 2;
     }
 
-    public String getSolutionPart1() {
+    @Override
+    void parseInput() {
+    }
+
+    @Override
+    String getSolutionPart1() {
         return "tbd";
     }
 
-    public String getSolutionPart2() {
+    @Override
+    String getSolutionPart2() {
         return "tbd";
     }
 }
+

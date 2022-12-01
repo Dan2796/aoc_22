@@ -1,14 +1,20 @@
 package main.solutions.days;
 import java.util.*;
 
-public class Day1 extends Day2022 {
-    Day1() {
-        super(true, 1);
+class Day1 extends Day {
+    Day1(boolean actual) {
+        super(actual);
     }
 
-    HashSet<Integer> calorieNumbers = new HashSet<>();
+    @Override
+    int getDay() {
+        return 1;
+    }
 
-    public void parseInput() {
+    final private ArrayList<Integer> calorieNumbers = new ArrayList<>();
+
+    @Override
+    void parseInput() {
         int calorieCounter = 0;
         while (input.hasNext()) {
             String calorie = input.nextLine();
@@ -21,18 +27,16 @@ public class Day1 extends Day2022 {
         }
         // add last number in list:
         calorieNumbers.add(calorieCounter);
+        calorieNumbers.sort(Collections.reverseOrder());
     }
 
-    public String getSolutionPart1() {
-        return Integer.toString(Collections.max(calorieNumbers));
+    @Override
+    Integer getSolutionPart1() {
+        return calorieNumbers.get(0);
     }
 
-    public String getSolutionPart2() {
-        int first = Collections.max(calorieNumbers);
-        calorieNumbers.remove(first);
-        int second = Collections.max(calorieNumbers);
-        calorieNumbers.remove(second);
-        int third = Collections.max(calorieNumbers);
-        return Integer.toString(first + second + third);
+    @Override
+    Integer getSolutionPart2() {
+        return (calorieNumbers.get(0) + calorieNumbers.get(1) + calorieNumbers.get(2));
     }
 }
