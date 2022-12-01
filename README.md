@@ -1,4 +1,4 @@
-# aoc_22
+# Advent of Code 2022
 
 My attempt at the 2022 advent of code in Java.
 
