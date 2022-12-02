@@ -10,7 +10,6 @@ class Day2 extends Day{
         return 2;
     }
 
-
     ArrayList<String> strategySheet = new ArrayList<>();
     @Override
     void parseInput() {
@@ -20,27 +19,27 @@ class Day2 extends Day{
 
     static HashMap<String, Integer> scoreLookupP1 = new HashMap<>();
     static {
-        scoreLookupP1.put("A X", 4);
         scoreLookupP1.put("B X", 1);
-        scoreLookupP1.put("C X", 7);
-        scoreLookupP1.put("A Y", 8);
-        scoreLookupP1.put("B Y", 5);
         scoreLookupP1.put("C Y", 2);
         scoreLookupP1.put("A Z", 3);
-        scoreLookupP1.put("B Z", 9);
+        scoreLookupP1.put("A X", 4);
+        scoreLookupP1.put("B Y", 5);
         scoreLookupP1.put("C Z", 6);
+        scoreLookupP1.put("C X", 7);
+        scoreLookupP1.put("A Y", 8);
+        scoreLookupP1.put("B Z", 9);
     }
     static HashMap<String, Integer> scoreLookupP2 = new HashMap<>();
     static {
-        scoreLookupP2.put("A X", 3);
         scoreLookupP2.put("B X", 1);
         scoreLookupP2.put("C X", 2);
+        scoreLookupP2.put("A X", 3);
         scoreLookupP2.put("A Y", 4);
         scoreLookupP2.put("B Y", 5);
         scoreLookupP2.put("C Y", 6);
+        scoreLookupP2.put("C Z", 7);
         scoreLookupP2.put("A Z", 8);
         scoreLookupP2.put("B Z", 9);
-        scoreLookupP2.put("C Z", 7);
     }
 
     @Override

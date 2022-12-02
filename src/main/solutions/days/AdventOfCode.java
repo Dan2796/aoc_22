@@ -8,7 +8,7 @@ public class AdventOfCode {
     }
 }
 
-abstract class Day{
+abstract class Day {
     Scanner input;
     Day(boolean actual) {
         File file;
