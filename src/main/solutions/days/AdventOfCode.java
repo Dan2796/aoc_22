@@ -4,7 +4,7 @@ import java.io.*;
 
 public class AdventOfCode {
     public static void main(String[] args) {
-        main.solutions.days.Day.printSolutions(new Day1(true));
+        main.solutions.days.Day.printSolutions(new Day2(true));
     }
 }
 
