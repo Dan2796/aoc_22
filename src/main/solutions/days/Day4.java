@@ -15,15 +15,9 @@ class Day4 extends Day{
     @Override
     void parseInput() {
         while (input.hasNext()) {
-            String[] rawInput;
-            String[] firstPersonRaw;
-            String[] secondPersonRaw;
-            rawInput = input.nextLine().split(",");
-            firstPersonRaw = rawInput[0].split("-");
-            secondPersonRaw = rawInput[1].split("-");
-            int[] firstPerson = {Integer.parseInt(firstPersonRaw[0]), Integer.parseInt(firstPersonRaw[1])};
-            int[] secondPerson = {Integer.parseInt(secondPersonRaw[0]), Integer.parseInt(secondPersonRaw[1])};
-            pairTasks.put(firstPerson, secondPerson);
+            String[] rawInput = input.nextLine().split("(,)|(-)");
+            pairTasks.put(new int[]{Integer.parseInt(rawInput[0]), Integer.parseInt(rawInput[1])},
+                          new int[]{Integer.parseInt(rawInput[2]), Integer.parseInt(rawInput[3])});
         }
     }
 
