@@ -3,8 +3,8 @@ import java.util.*;
 import java.io.*;
 
 public class AdventOfCode {
-    public static void main(String[] args) {
-        main.solutions.days.Day.printSolutions(new Day5(true));
+    public static void main(String[] args) throws NoSolutionFoundException {
+        main.solutions.days.Day.printSolutions(new Day6(true));
     }
 }
 
@@ -27,14 +27,19 @@ abstract class Day {
 
     abstract void parseInput();
     abstract int getDay();
-    abstract Object getSolutionPart1();
-    abstract Object getSolutionPart2();
+    abstract Object getSolutionPart1() throws NoSolutionFoundException;
+    abstract Object getSolutionPart2() throws NoSolutionFoundException;
 
-    static void printSolutions(Day day) {
+    static void printSolutions(Day day) throws NoSolutionFoundException {
         day.parseInput();
         System.out.println("Day " + day.getDay() + " solution to part 1: " + day.getSolutionPart1().toString());
         System.out.println("Day " + day.getDay() + " solution to part 2: " + day.getSolutionPart2().toString());
     }
 }
 
+class NoSolutionFoundException extends Exception {
+    public NoSolutionFoundException(int part) {
+        super("No solution found to part " + part);
+     }
+}
 
