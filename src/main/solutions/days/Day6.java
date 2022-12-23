@@ -48,7 +48,7 @@ class Day6 extends Day{
     Integer getSolutionPart2() throws NoSolutionFoundException {
         try {
             return findFirstMaker(datastream, 14);
-        } catch (Exception NoMarkerFound ){
+        } catch (Exception NoMarkerFound){
             throw new NoSolutionFoundException(2);
         }
     }
