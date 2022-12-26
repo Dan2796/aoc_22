@@ -12,82 +12,65 @@ class Day9 extends Day{
         return 9;
     }
 
-    RopePath ropePath = new RopePath();
+    Rope rope = new Rope(10);
     @Override
     void parseInput() {
         while (input.hasNext()) {
-            ropePath.moveHeadAndTail(input.nextLine());
+            rope.moveHeadAndTail(input.nextLine());
         }
     }
 
     @Override
     Integer getSolutionPart1() {
-        return ropePath.getTailPath().keySet().size();
+        return rope.getVisited(1).size();
     }
 
     @Override
-    String getSolutionPart2() {
-        return "tbd";
+    Integer getSolutionPart2() {
+        return rope.getVisited(9).size();
     }
 }
 
-class RopePath {
-    Coordinate head;
-    Coordinate tail;
-
-    HashMap<Coordinate, Integer> tailPath;
-    RopePath() {
-        head = new Coordinate(0,0);
-        tail = new Coordinate(0,0);
-        tailPath = new HashMap<>();
-        tailPath.put(tail, 1);
+class Rope {
+    ArrayList<Coordinate> rope = new ArrayList<>();
+    ArrayList<HashSet<Coordinate>> visited = new ArrayList<>();
+    Rope(int ropeLength) {
+        for (int i = 0; i < ropeLength; i++) {
+            rope.add(new Coordinate(0, 0));
+            visited.add(new HashSet<>());
+            visited.get(i).add(new Coordinate(0, 0));
+        }
     }
 
-    public HashMap<Coordinate, Integer> getTailPath() {
-        return tailPath;
+    public HashSet<Coordinate> getVisited(int link) {
+        return visited.get(link);
     }
 
     public void moveHeadByOne(String direction) {
         switch (direction) {
-            case "R" -> head = new Coordinate(head.getX() + 1, head.getY());
-            case "L" -> head = new Coordinate(head.getX() - 1, head.getY());
-            case "U" -> head = new Coordinate(head.getX(), head.getY() + 1);
-            case "D" -> head = new Coordinate(head.getX(), head.getY() - 1);
+            case "R" -> rope.set(0, new Coordinate(rope.get(0).getX() + 1, rope.get(0).getY()));
+            case "L" -> rope.set(0, new Coordinate(rope.get(0).getX() - 1, rope.get(0).getY()));
+            case "U" -> rope.set(0, new Coordinate(rope.get(0).getX(), rope.get(0).getY() + 1));
+            case "D" -> rope.set(0, new Coordinate(rope.get(0).getX(), rope.get(0).getY() - 1));
         }
     }
-    public void catchUpTail() {
-        int headx = head.getX();
-        int heady = head.getY();
-        int tailx = tail.getX();
-        int taily = tail.getY();
-
-        if (headx == tailx && heady - taily == 2) {
-            tail = new Coordinate(tailx, taily + 1);
-        } else if (headx == tailx && heady - taily == -2) {
-            tail = new Coordinate(tailx, taily - 1);
-        } else if (headx - tailx == 2 && heady == taily) {
-            tail = new Coordinate(tailx + 1, taily);
-        } else if (headx - tailx == -2 && heady == taily) {
-            tail = new Coordinate(tailx - 1, taily);
-        // vertical diaganols:
-        } else if (headx - tailx == 2 && heady - taily == 1) {
-            tail = new Coordinate(tailx + 1, taily + 1);
-        } else if (headx - tailx == -2 && heady - taily == 1) {
-            tail = new Coordinate(tailx - 1, taily + 1);
-        } else if (headx - tailx == 2 && heady - taily == -1) {
-            tail = new Coordinate(tailx + 1, taily - 1);
-        } else if (headx - tailx == -2 && heady - taily == -1) {
-            tail = new Coordinate(tailx - 1, taily - 1);
-        // horizontal diaganols:
-        } else if (headx - tailx == 1 && heady - taily == 2) {
-            tail = new Coordinate(tailx + 1, taily + 1);
-        } else if (headx - tailx == 1 && heady - taily == -2) {
-            tail = new Coordinate(tailx + 1, taily - 1);
-        } else if (headx - tailx == -1 && heady - taily == 2) {
-            tail = new Coordinate(tailx - 1, taily + 1);
-        } else if (headx - tailx == -1 && heady - taily == -2) {
-            tail = new Coordinate(tailx - 1, taily - 1);
+    public Coordinate followNextItem(Coordinate follower, Coordinate leader) {
+        int xgap = leader.getX() - follower.getX();
+        int ygap = leader.getY() - follower.getY();
+        int xbump = 0;
+        int ybump = 0;
+        if (Math.abs(xgap) >= 2 && ygap == 0) {
+            xbump = xgap > 0 ? 1 : -1;
+        } else if (Math.abs(xgap) >= 2) {
+            xbump = xgap > 0 ? 1 : -1;
+            ybump = ygap > 0 ? 1 : -1;
+        } else if (xgap == 0 && Math.abs(ygap) >= 2) {
+            ybump = ygap > 0 ? 1 : -1;
+        } else if (Math.abs(ygap) >= 2) {
+            xbump = xgap > 0 ? 1 : -1;
+            ybump = ygap > 0 ? 1 : -1;
         }
+        return new Coordinate(follower.getX() + xbump, follower.getY() + ybump);
     }
     public void moveHeadAndTail(String moveInstruction) {
 
@@ -96,11 +79,10 @@ class RopePath {
 
         for (int i = 0; i < amount; i++) {
             moveHeadByOne(direction);
-            catchUpTail();
-            if (tailPath.containsKey(tail)) {
-                tailPath.put(tail, tailPath.get(tail) + 1);
-            } else{
-                tailPath.put(tail, 1);
+            visited.get(0).add(rope.get(0));
+            for (int j = 1; j < rope.size(); j++) {
+                rope.set(j, followNextItem(rope.get(j), rope.get(j-1)));
+                visited.get(j).add(rope.get(j));
             }
         }
     }
