@@ -4,7 +4,7 @@ import java.io.*;
 
 public class AdventOfCode {
     public static void main(String[] args) throws NoSolutionFoundException, ParsingException {
-        main.solutions.days.Day.printSolutions(new Day10(true));
+        main.solutions.days.Day.printSolutions(new Day11(true));
     }
 }
 
