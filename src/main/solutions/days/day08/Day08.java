@@ -1,11 +1,10 @@
-package main.solutions.days.day8;
-import java.util.*;
+package main.solutions.days.day08;
 
 import main.solutions.days.allDays.Day;
 import main.useful.classes.Coordinate;
 
-public class Day8 extends Day {
-    public Day8(boolean actual) {
+public class Day08 extends Day {
+    public Day08(boolean actual) {
         super(actual);
     }
 

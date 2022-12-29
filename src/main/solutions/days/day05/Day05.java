@@ -1,10 +1,10 @@
-package main.solutions.days.day5;
+package main.solutions.days.day05;
 import main.solutions.days.allDays.Day;
 
 import java.util.*;
 
-public class Day5 extends Day {
-    public Day5(boolean actual) {
+public class Day05 extends Day {
+    public Day05(boolean actual) {
         super(actual);
     }
 

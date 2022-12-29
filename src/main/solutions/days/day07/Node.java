@@ -1,4 +1,4 @@
-package main.solutions.days.day7;
+package main.solutions.days.day07;
 
 import java.util.HashSet;
 

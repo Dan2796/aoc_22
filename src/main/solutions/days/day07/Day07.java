@@ -1,11 +1,11 @@
-package main.solutions.days.day7;
+package main.solutions.days.day07;
 import main.solutions.days.allDays.Day;
 import main.solutions.days.allDays.ParsingException;
 
 import java.util.*;
 
-public class Day7 extends Day {
-    public Day7(boolean actual) {
+public class Day07 extends Day {
+    public Day07(boolean actual) {
         super(actual);
     }
 

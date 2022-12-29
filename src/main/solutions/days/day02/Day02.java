@@ -1,9 +1,9 @@
-package main.solutions.days.day2;
+package main.solutions.days.day02;
 import main.solutions.days.allDays.Day;
 
 import java.util.*;
-public class Day2 extends Day {
-    public Day2(boolean actual) {
+public class Day02 extends Day {
+    public Day02(boolean actual) {
         super(actual);
     }
 

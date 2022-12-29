@@ -1,4 +1,4 @@
-package main.solutions.days.day6;
+package main.solutions.days.day06;
 
 class NoMarkerFound extends Exception {
     public NoMarkerFound() {

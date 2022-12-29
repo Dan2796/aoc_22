@@ -9,10 +9,17 @@ public abstract class Day {
     public Day(boolean actual) {
         File file;
         if (actual) {
-            file = new File("inputs/actual/day_" + this.getDay() + ".txt");
-        }
-        else {
-            file = new File("inputs/example/day_" + this.getDay() + ".txt");
+            if (this.getDay() < 10) {
+                file = new File("inputs/actual/day_0" + this.getDay() + ".txt");
+            } else {
+                file = new File("inputs/actual/day_" + this.getDay() + ".txt");
+            }
+        } else {
+            if (this.getDay() < 10) {
+                file = new File("inputs/example/day_0" + this.getDay() + ".txt");
+            } else {
+                file = new File("inputs/example/day_" + this.getDay() + ".txt");
+            }
         }
         try {
             this.input = new Scanner(file);

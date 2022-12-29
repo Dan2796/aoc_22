@@ -1,4 +1,4 @@
-package main.solutions.days.day5;
+package main.solutions.days.day05;
 
 import java.util.ArrayList;
 import java.util.Stack;

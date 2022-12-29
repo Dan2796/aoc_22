@@ -1,11 +1,11 @@
-package main.solutions.days.day6;
+package main.solutions.days.day06;
 import main.solutions.days.allDays.Day;
 import main.solutions.days.allDays.NoSolutionFoundException;
 
 import java.util.*;
 
-public class Day6 extends Day {
-    public Day6(boolean actual) {
+public class Day06 extends Day {
+    public Day06(boolean actual) {
         super(actual);
     }
 

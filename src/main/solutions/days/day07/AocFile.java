@@ -1,4 +1,4 @@
-package main.solutions.days.day7;
+package main.solutions.days.day07;
 
 // Aoc prefix to avoid confusion with existing File class
 class AocFile extends Node {

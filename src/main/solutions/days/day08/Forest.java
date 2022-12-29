@@ -1,4 +1,4 @@
-package main.solutions.days.day8;
+package main.solutions.days.day08;
 
 import main.useful.classes.Coordinate;
 
